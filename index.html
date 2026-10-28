@@ -19,6 +19,7 @@
       <nav aria-label="On this page">
         <a href="#announcement">Announcement</a>
         <a href="#judgment">Judgment</a>
+        <a href="#names">Names</a>
         <a href="#ledger">Ledger</a>
         <a href="#tape">Tape</a>
         <a href="#questions">Questions</a>
@@ -49,13 +50,73 @@
         </article>
         <article class="card">
           <h3>Not enough to score the program</h3>
-          <p>RLUSD is a general stablecoin. An indexer counted about 68,000 holding accounts. The largest named balances in a 28 October check were Binance, Bybit, and Uphold, plus unlabeled accounts. A search for an account named C2FO came back empty. A large RLUSD payment is a candidate, not a C2FO settlement.</p>
+          <p>RLUSD is a general stablecoin. An indexer counted about 68,000 holding accounts. The largest named balances in a 28 October check were Binance, Bybit, and Uphold, plus unlabeled accounts. Pollen, C2FO, and Water for Commerce are not among the named accounts. A large RLUSD payment is a candidate, not a C2FO settlement.</p>
         </article>
       </div>
       <div class="prose tight">
         <p>A first pass at a monitor assumed four signatures: new hot wallets with million-dollar trust lines, bursts of payments during business hours, a standard memo such as an invoice hash, and payment channels. The first two will happen for exchanges, market makers, and any other RLUSD user. The memo format and the payment channels are not in the announcement. Treating them as the program would invent a signal.</p>
         <p>Self-payments and offers are a trap. Traders set the amount field to an enormous limit and pay themselves. The number that matters is the delivered amount on a payment between two different accounts, and only when the transaction succeeded.</p>
         <p>So this page keeps two things. A snapshot of the issuer, so the size of the public rail is visible. A live tape of every successful RLUSD payment from one account to another, with 10,000 and above marked large. A listen on 28 October turned up small deliveries and no payment of 100 RLUSD or more in the samples. The tape is whoever is using RLUSD. It is not an Instant Pay dashboard. Offers and batch trades stay off the tape, because their amount field is a limit.</p>
+      </div>
+    </section>
+
+    <section class="wrap" id="names">
+      <h2>Names C2FO actually uses</h2>
+      <p class="section-lead">These are public legal names, not wallets. None of them appear in the 3,522 accounts an indexer publishes under a known name, and none resolve as an account address.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">What it is</th>
+              <th scope="col">On the ledger</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Pollen, Inc.</td>
+              <td>Delaware corporation. C2FO’s privacy policy says this is the company, and C2FO is its trademark. LEI 984500RI2C6EDE8E0483. SEC CIK 0001508784.</td>
+              <td>No named account</td>
+            </tr>
+            <tr>
+              <td>C2FO</td>
+              <td>The name Pollen uses with customers. Bloomberg describes Pollen, Inc. as doing business as C2FO.</td>
+              <td>No named account</td>
+            </tr>
+            <tr>
+              <td>C2FO Limited</td>
+              <td>UK company 09000578. Pollen, Inc. is the shareholder. C2FO’s privacy policy names it as the controller for the UK, the EEA, and Switzerland.</td>
+              <td>No named account</td>
+            </tr>
+            <tr>
+              <td>C2FO India LLP</td>
+              <td>Described as a subsidiary of Pollen, Inc. in a 2019 Indian tax ruling about the early-pay platform.</td>
+              <td>No named account</td>
+            </tr>
+            <tr>
+              <td>C2FO India Technologies Private Limited</td>
+              <td>Named as a fellow subsidiary in the audit of C2FO’s Indian factoring company.</td>
+              <td>No named account</td>
+            </tr>
+            <tr>
+              <td>C2FO Factoring Solutions Private Limited</td>
+              <td>Indian company that operates a trade-receivables discounting system. Its audit says it is wholly owned by Pollen, Inc.</td>
+              <td>No named account</td>
+            </tr>
+            <tr>
+              <td>Water for Commerce Fund Management, LLC</td>
+              <td>Delaware LLC formed 28 May 2015. In a 2024 Kansas case, a C2FO representative called it a C2FO affiliate, and the court said its sole member is a Delaware corporation based in Kansas. The opinion does not name that member. The company appears as a lender, including in a 2025 New York case.</td>
+              <td>No named account</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="prose tight">
+        <h3>Accounts opened recently, and who funded them</h3>
+        <p>The holder list does not include an open date. This check took the 40 largest RLUSD balances and 25 lines with a limit of at least 1 million and a balance under 10,000, then read each account’s inception. That is the practical cut of “large or newly prepared,” not all 68,000 holders.</p>
+        <p>Two accounts opened at 18:14 UTC on 27 October 2026, the day of the announcement, and each now holds about 5,000,081 RLUSD: <a href="https://xrpscan.com/account/rixwkZS6gDHMMqrM6ew4pWMuwsJkQhAUB">rixwkZ…QhAUB</a> and <a href="https://xrpscan.com/account/rQDJ1PF9vjnLXkrY5EchFtcRRMvKvK5hmF">rQDJ1P…K5hmF</a>. A Coinbase account activated both. The account named Coinbase, <a href="https://xrpscan.com/account/r4sRyacXpbh4HbagmgfoQq8Q3j8ZJzbZ1J">r4sRya…JzbZ1J</a>, sent the RLUSD. They are exchange wallets.</p>
+        <p>An account opened 9 July 2026 holds about 105 million RLUSD, <a href="https://xrpscan.com/account/rKWoRYn65imVUUF2Hmtpp78E6NAjTf6ExL">rKWoRY…Tf6ExL</a>. The inbound millions came from the account named RLUSD, <a href="https://xrpscan.com/account/r9c6A65SmhhZALrkMTpqc9X3kGjv5gtNNk">r9c6A6…5gtNNk</a>, whose domain is ripple.com, and about 5 million came from an account whose parent is a BitGo initialization wallet. That is a Ripple distribution, not a named outside fund.</p>
+        <p>Other 2026 balances in this cut sit under Binance, Kraken, ChangeNOW, BitGo, or Ripple, or they are transfers between older unlabeled accounts. No account in the cut has the name, domain, or parent Pollen, C2FO, or Water for Commerce.</p>
       </div>
     </section>
 

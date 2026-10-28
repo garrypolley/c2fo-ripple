@@ -37,7 +37,7 @@
       <h2>What the announcement says</h2>
       <p>The <a href="https://ripple.com/ripple-press/c2fo-and-ripple-partner-to-modernize-trade-finance-using-the-xrp-ledger/">Ripple press note</a> from Ripple Swell in New York says businesses will keep using C2FO for early payment. Instant payment is funded by participating capital providers and settled on the XRP Ledger, in RLUSD, so a supplier can be paid in seconds instead of waiting on bank rails. Invoice terms stay as agreed.</p>
       <p>The note says RLUSD has more than $2.5 billion in market capitalization, with more than $1 billion issued on the XRP Ledger. It points businesses who want Instant Pay to a waitlist. It does not publish a wallet, a memo format, a payment-channel id, or a volume figure for the new product.</p>
-      <p>C2FO’s existing early-pay programs are described as having already moved more than $520 billion of working capital. That history is not on this ledger. Instant Pay is the piece that would be.</p>
+      <p><a href="https://c2fo.com/newsroom/c2fo-and-ripple-partner-to-modernize-trade-finance-using-the-xrp-ledger/">C2FO’s copy of the release</a> puts the existing early-pay history at more than $525 billion of working capital. That history is not on this ledger. Instant Pay is the piece that would be. The release still points interested businesses to a waitlist.</p>
     </section>
 
     <section class="wrap" id="judgment">
@@ -55,7 +55,7 @@
       <div class="prose tight">
         <p>A first pass at a monitor assumed four signatures: new hot wallets with million-dollar trust lines, bursts of payments during business hours, a standard memo such as an invoice hash, and payment channels. The first two will happen for exchanges, market makers, and any other RLUSD user. The memo format and the payment channels are not in the announcement. Treating them as the program would invent a signal.</p>
         <p>Self-payments and offers are a trap. Traders set the amount field to an enormous limit and pay themselves. The number that matters is the delivered amount on a payment between two different accounts, and only when the transaction succeeded.</p>
-        <p>So this page keeps two things. A snapshot of the issuer, so the size of the public rail is visible. A live tape of cross-account RLUSD deliveries of at least 100, with 10,000 and above marked large. The tape is whoever is using RLUSD. It is not an Instant Pay dashboard. Offers and batch trades stay off the tape, because their amount field is a limit.</p>
+        <p>So this page keeps two things. A snapshot of the issuer, so the size of the public rail is visible. A live tape of every successful RLUSD payment from one account to another, with 10,000 and above marked large. A listen on 28 October turned up small deliveries and no payment of 100 RLUSD or more in the samples. The tape is whoever is using RLUSD. It is not an Instant Pay dashboard. Offers and batch trades stay off the tape, because their amount field is a limit.</p>
       </div>
     </section>
 
@@ -109,7 +109,7 @@
 
     <section class="wrap" id="tape">
       <h2>Live tape</h2>
-      <p class="section-lead">While this page is open, the browser subscribes to the public transaction stream at <code>wss://xrplcluster.com</code>. A row is a successful payment from one account to a different account, delivering at least 100 RLUSD. Rows of 10,000 RLUSD or more are marked large. Nothing here is attributed to C2FO. Smaller payments are counted and not listed. Offers are not listed.</p>
+      <p class="section-lead">While this page is open, the browser subscribes to the public transaction stream at <code>wss://xrplcluster.com</code>. A row is a successful payment from one account to a different account that delivers any RLUSD. Rows of 10,000 RLUSD or more are marked large. Nothing here is attributed to C2FO. Offers and self-payments are not listed.</p>
       <p class="status" id="stream-status" role="status">Connecting…</p>
       <p class="counts" id="stream-counts">No payments yet this session.</p>
       <div class="table-wrap">
@@ -125,7 +125,7 @@
           </thead>
           <tbody id="tape-body">
             <tr>
-              <td colspan="5" class="empty">Waiting for a payment of at least 100 RLUSD.</td>
+              <td colspan="5" class="empty">Waiting for the next RLUSD payment between two accounts.</td>
             </tr>
           </tbody>
         </table>

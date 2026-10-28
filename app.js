@@ -1,6 +1,5 @@
 const ISSUER = "rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De";
 const CURRENCY = "524C555344000000000000000000000000000000";
-const FLOOR = 100;
 const LARGE = 10000;
 const MAX_ROWS = 40;
 const RIPPLE_EPOCH = Date.UTC(2000, 0, 1);
@@ -13,7 +12,7 @@ const statusEl = document.querySelector("#stream-status");
 const countsEl = document.querySelector("#stream-counts");
 const tapeBody = document.querySelector("#tape-body");
 
-const seen = { listed: 0, small: 0, large: 0 };
+const seen = { listed: 0, large: 0 };
 let rows = 0;
 
 function rlUsdAmount(amount) {
@@ -25,6 +24,9 @@ function rlUsdAmount(amount) {
 }
 
 function formatNumber(value) {
+  if (value > 0 && value < 0.01) {
+    return new Intl.NumberFormat("en-US", { maximumSignificantDigits: 3 }).format(value);
+  }
   return new Intl.NumberFormat("en-US", { maximumFractionDigits: 2 }).format(value);
 }
 
@@ -76,12 +78,7 @@ function setStatus(text, kind) {
 }
 
 function renderCounts() {
-  const bits = [
-    seen.listed + " listed",
-    seen.large + " large",
-    seen.small + " under " + FLOOR + " RLUSD, not listed"
-  ];
-  countsEl.textContent = bits.join(" · ");
+  countsEl.textContent = seen.listed + " listed · " + seen.large + " of 10,000 RLUSD or more";
 }
 
 function addRow(tx, value) {
@@ -119,13 +116,8 @@ function consider(tx, meta, engineResult) {
   const result = (meta && meta.TransactionResult) || engineResult;
   if (result !== "tesSUCCESS") return;
   if (!tx.Account || tx.Account === tx.Destination) return;
-  const value = rlUsdAmount(meta.delivered_amount);
-  if (value == null) return;
-  if (value < FLOOR) {
-    seen.small += 1;
-    renderCounts();
-    return;
-  }
+  const value = rlUsdAmount(meta && meta.delivered_amount);
+  if (value == null || value === 0) return;
   seen.listed += 1;
   if (value >= LARGE) seen.large += 1;
   addRow(tx, value);
@@ -163,7 +155,7 @@ function connect() {
     return;
   }
   socket.addEventListener("open", () => {
-    setStatus("Connected. Listing payments of at least " + FLOOR + " RLUSD.", "live");
+    setStatus("Connected. Listing every RLUSD payment between two accounts.", "live");
     socket.send(JSON.stringify({ id: 1, command: "subscribe", streams: ["transactions"] }));
   });
   socket.addEventListener("message", (event) => {

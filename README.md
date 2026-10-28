@@ -10,4 +10,10 @@ Open `index.html` in a browser, or serve this folder:
 python3 -m http.server 8788
 ```
 
-Deploy the folder as a static Netlify site. Intended hostname: `c2fo-ripple.garrypolley.com`.
+Live site: https://c2fo-ripple.garrypolley.com
+
+Production also answers at https://c2fo-ripple.netlify.app. Deploys are manual:
+
+```
+netlify deploy --prod --dir . --site c2fo-ripple --no-build
+```
